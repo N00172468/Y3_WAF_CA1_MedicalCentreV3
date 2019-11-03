@@ -1,4 +1,12 @@
 <?php
+# @Author: John Carlo M. Ramos
+# @Date:   2019-11-03T16:29:43+00:00
+# @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
+# @Last modified by:   John Carlo M. Ramos
+# @Last modified time: 2019-11-03T18:43:22+00:00
+
+
+
 
 namespace App\Http\Controllers\Auth;
 
@@ -68,5 +76,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Once user is created:
+        $user->roles()->attach(Role::where('name', 'user')->first());
+
+        return $user;
     }
 }

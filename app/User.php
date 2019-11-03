@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:29:43+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T17:33:14+00:00
+# @Last modified time: 2019-11-03T18:40:13+00:00
 
 
 
@@ -49,5 +49,27 @@ class User extends Authenticatable
     public function roles()
     {
       return $this->belongsToMany('App\Role', 'user_role');
+    }
+
+    // Show either a list (array) or just one user on what role they have:
+    public function authorizeRoles($roles)
+    {
+      if (is_array($roles)) {
+        return $this->hasAnyRole($roles) || abort(401, 'This action is unauthorized');
+      }
+
+      return $this->hasRole($roles) || abort(401, 'This action is unauthorized');
+    }
+
+    // Function that checks what role a user has:
+    public function hasRole($role)
+    {
+      return null !== $this->roles()->where('name', $role)->first();
+    }
+
+    // Specifications (Array):
+    public function hasAnyRole($roles)
+    {
+      return null !== $this->roles()->whereIn('name', $roles)->first();
     }
 }
