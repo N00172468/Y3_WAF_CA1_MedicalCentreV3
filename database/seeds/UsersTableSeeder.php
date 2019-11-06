@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T17:03:09+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T17:23:54+00:00
+# @Last modified time: 2019-11-06T16:11:20+00:00
 
 
 
@@ -27,6 +27,9 @@ class UsersTableSeeder extends Seeder
       // Patient Role
       $role_patient = Role::where('name', 'patient')->first();
 
+      // Admin Role
+      $role_admin = Role::where('name', 'admin')->first();
+
       // Doctor User:
       $doctor = new User();
       $doctor->name = "Dr. Hibbert";
@@ -46,5 +49,15 @@ class UsersTableSeeder extends Seeder
       $patient->password = bcrypt('secret');
       $patient->save();
       $patient->roles()->attach($role_patient);
+
+      // Admin User:
+      $admin = new User();
+      $admin->name = "John Carlo M. Ramos";
+      $admin->address = "168 Gleann na Ri, Druid Valley, Cabinteely, Dublin 18";
+      $admin->phone = "+123 123 1234";
+      $admin->email = "j.c@email.com";
+      $admin->password = bcrypt('secret');
+      $admin->save();
+      $admin->roles()->attach($role_admin);
     }
 }

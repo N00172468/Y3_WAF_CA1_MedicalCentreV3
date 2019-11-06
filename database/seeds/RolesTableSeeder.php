@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T17:03:27+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T17:30:56+00:00
+# @Last modified time: 2019-11-06T15:59:38+00:00
 
 
 
@@ -20,7 +20,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-      // Creating Doctor Seeder:
+
+    // Creating Doctor Seeder:
     $role_doctor = new Role();
     $role_doctor->name = 'doctor';
     $role_doctor->description = 'A doctor user';
@@ -31,5 +32,11 @@ class RolesTableSeeder extends Seeder
     $role_patient->name = 'patient';
     $role_patient->description = 'A patient user';
     $role_patient->save();
+
+    // Creating Admin Seeder:
+    $role_admin = new Role();
+    $role_admin->name = 'admin';
+    $role_admin->description = 'An admin user';
+    $role_admin->save();
     }
 }

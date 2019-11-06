@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard - Doctors</div>
+                <div class="card-header">Dashboard - Admin</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -16,7 +16,7 @@
 
                     You are logged in!
                     <hr/>
-                    Welcome, Doctor {{ Auth::user()->name }}.
+                    Welcome, Admin {{ Auth::user()->name }}.
                 </div>
             </div>
         </div>

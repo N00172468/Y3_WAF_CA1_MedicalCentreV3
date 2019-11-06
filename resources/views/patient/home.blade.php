@@ -15,8 +15,8 @@
                     @endif
 
                     You are logged in!
-                    <br/>
-                    Welcome, Patient.
+                    <hr/>
+                    Welcome, {{ Auth::user()->name }}.
                 </div>
             </div>
         </div>

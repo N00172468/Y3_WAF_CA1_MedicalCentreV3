@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:41:23+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T19:00:59+00:00
+# @Last modified time: 2019-11-06T16:44:19+00:00
 
 
 
@@ -34,7 +34,9 @@ class HomeController extends Controller
       $user = $request->user();
       $home = 'patient.home';
 
-      if ($user->hasRole('doctor')) {
+      if ($user->hasRole('admin')) {
+        $home = 'admin.home';
+      } else if ($user->hasRole('doctor')) {
         $home = 'doctor.home';
       } else {
         $home = 'patient.home';
