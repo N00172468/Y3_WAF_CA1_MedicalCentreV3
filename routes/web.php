@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:29:43+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-11T17:56:38+00:00
+# @Last modified time: 2019-11-11T20:18:07+00:00
 
 
 
@@ -49,5 +49,5 @@ Route::put('/admin/visits/{id}', 'Admin\VisitController@update')->name('admin.vi
 Route::delete('/admin/visits/{id}', 'Admin\VisitController@destroy')->name('admin.visits.destroy');
 
 // Patient -> Can only Read Visits:
-Route::get('/user/visits', 'Patient\VisitController@index')->name('patient.visits.index');
-Route::get('/user/visits/{id}', 'Patient\VisitController@show')->name('patient.visits.show');
+Route::get('/patient/visits', 'Patient\VisitController@index')->name('patient.visits.index');
+Route::get('/patient/visits/{id}', 'Patient\VisitController@show')->name('patient.visits.show');

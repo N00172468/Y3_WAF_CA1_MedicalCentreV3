@@ -88,7 +88,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                   {{-- Dashboard --}}
-                                  <a class="dropdown-item" href="{{ route('admin.home') }}"
+                                  <a class="dropdown-item" href="{{ route('home') }}"
                                      onclick="event.preventDefault();">
                                       {{ __('Dashboard') }}
                                   </a>

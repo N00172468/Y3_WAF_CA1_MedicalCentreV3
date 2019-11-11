@@ -17,6 +17,7 @@
                     You are logged in!
                     <hr/>
                     Welcome, {{ Auth::user()->name }}.
+                    <a href="{{ route('patient.visits.index') }}">View Your Visits</a>
                 </div>
             </div>
         </div>
