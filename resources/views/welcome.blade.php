@@ -98,6 +98,7 @@
                     <a href="https://github.com/N00172468">Github</a>
                     <a href="https://www.linkedin.com/in/john-carlo-ramos-1a587b195/">LinkedIn</a>
                     <a href="https://www.instagram.com/jc_ramos_photography/">Instagram</a>
+                    <a href="{{ route('about') }}">About us</a>
                     {{-- <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>

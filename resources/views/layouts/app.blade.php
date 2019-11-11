@@ -24,9 +24,37 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+
+                {{-- Logo --}}
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                     Eastwood Medical Centre
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <h1>|</h1>
+
+                {{-- Doctors --}}
+                <a class="navbar-brand" href="#">
+                    Doctors
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {{-- Patients --}}
+                <a class="navbar-brand" href="#">
+                    Patients
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {{-- Visits --}}
+                <a class="navbar-brand" href="{{ route('admin.visits.index') }}">
+                    Visits
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -56,7 +84,22 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+                                {{-- Dropdown Contents --}}
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                  {{-- Dashboard --}}
+                                  <a class="dropdown-item" href="{{ route('admin.home') }}"
+                                     onclick="event.preventDefault();">
+                                      {{ __('Dashboard') }}
+                                  </a>
+
+                                  {{-- Visits --}}
+                                  <a class="dropdown-item" href="{{ route('admin.visits.index') }}"
+                                     onclick="event.preventDefault();">
+                                      {{ __('Visits') }}
+                                  </a>
+
+                                      {{-- Logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
