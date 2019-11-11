@@ -16,7 +16,7 @@
 
                     You are logged in!
                     <hr/>
-                    Welcome, Admin {{ Auth::user()->name }}.
+                    <span>Welcome, Admin {{ Auth::user()->name }}.
                 </div>
             </div>
         </div>
