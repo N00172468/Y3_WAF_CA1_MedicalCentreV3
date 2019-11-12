@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Visit: {{ $visit->date }} | {{ $visit->time_start }} - {{ $visit->time_end }}
+            Visit: {{ $visit->date }}
           </div>
           <div class="card-body">
               <table class="table table-hover">
