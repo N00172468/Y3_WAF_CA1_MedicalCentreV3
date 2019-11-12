@@ -88,18 +88,36 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                   {{-- Dashboard --}}
-                                  <a class="dropdown-item" href="{{ route('home') }}"
-                                     onclick="event.preventDefault();">
+                                  <a class="dropdown-item" href="{{ route('home') }}">
                                       {{ __('Dashboard') }}
                                   </a>
 
                                   {{-- Visits --}}
-                                  <a class="dropdown-item" href="{{ route('admin.visits.index') }}"
-                                     onclick="event.preventDefault();">
+                                  {{-- <a class="dropdown-item" href="{{ route('admin.visits.index') }}">
                                       {{ __('Visits') }}
+                                  </a> --}}
+
+                                  {{-- Github --}}
+                                  <a class="dropdown-item" href="https://github.com/N00172468">
+                                      Github
                                   </a>
 
-                                      {{-- Logout --}}
+                                  {{-- LinkedIn --}}
+                                  <a class="dropdown-item" href="https://www.linkedin.com/in/john-carlo-ramos-1a587b195/">
+                                      LinkedIn
+                                  </a>
+
+                                  {{-- Instagram --}}
+                                  <a class="dropdown-item" href="https://www.instagram.com/jc_ramos_photography/">
+                                      Instagram
+                                  </a>
+
+                                  {{-- About Us --}}
+                                  <a class="dropdown-item" href="{{ route('about') }}">
+                                      About Us
+                                  </a>
+
+                                    {{-- Logout --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

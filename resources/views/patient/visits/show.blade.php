@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Visit: {{ $visit->date }}
+            Date: {{ $visit->date }} | Time: {{ $visit->time_start }} - {{ $visit->time_end }}
           </div>
           <div class="card-body">
               <table class="table table-hover">
@@ -33,7 +33,7 @@
                   </tr>
                 </tbody>
               </table>
-              <a href="{{ route('user.visits.index') }}" class="btn btn-info">Back</a>
+              <a href="{{ route('patient.visits.index') }}" class="btn btn-info">Back</a>
           </div>
         </div>
       </div>

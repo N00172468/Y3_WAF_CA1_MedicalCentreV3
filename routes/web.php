@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:29:43+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-12T12:54:48+00:00
+# @Last modified time: 2019-11-12T15:40:21+00:00
 
 
 
@@ -33,13 +33,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// From Auth V1:
+// Home Controllers:
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
 Route::get('/doctor/home', 'Doctor\HomeController@index')->name('doctor.home');
 Route::get('/patient/home', 'Patient\HomeController@index')->name('patient.home');
 
-// From CRUD V1.5:
-// Admin -> Visits Table:
+// Admin:
+// Visits Table:
 Route::get('/admin/visits', 'Admin\VisitController@index')->name('admin.visits.index');
 Route::get('/admin/visits/create', 'Admin\VisitController@create')->name('admin.visits.create');
 Route::get('/admin/visits/{id}', 'Admin\VisitController@show')->name('admin.visits.show');
@@ -48,7 +48,8 @@ Route::get('/admin/visits/{id}/edit', 'Admin\VisitController@edit')->name('admin
 Route::put('/admin/visits/{id}', 'Admin\VisitController@update')->name('admin.visits.update');
 Route::delete('/admin/visits/{id}', 'Admin\VisitController@destroy')->name('admin.visits.destroy');
 
-// Doctor -> Visits Table:
+// Doctor:
+// Visits Table:
 Route::get('/doctor/visits', 'Doctor\VisitController@index')->name('doctor.visits.index');
 Route::get('/doctor/visits/create', 'Doctor\VisitController@create')->name('doctor.visits.create');
 Route::get('/doctor/visits/{id}', 'Doctor\VisitController@show')->name('doctor.visits.show');
@@ -57,6 +58,7 @@ Route::get('/doctor/visits/{id}/edit', 'Doctor\VisitController@edit')->name('doc
 Route::put('/doctor/visits/{id}', 'Doctor\VisitController@update')->name('doctor.visits.update');
 Route::delete('/doctor/visits/{id}', 'Doctor\VisitController@destroy')->name('doctor.visits.destroy');
 
-// Patient -> Can only Read Visits:
+// Patient:
+// Visits Table:
 Route::get('/patient/visits', 'Patient\VisitController@index')->name('patient.visits.index');
 Route::get('/patient/visits/{id}', 'Patient\VisitController@show')->name('patient.visits.show');

@@ -30,7 +30,7 @@
                       <td>{{ $visit->duration_of_visit }}</td>
                       <td>{{ $visit->cost_of_visit }}</td>
                       <td>
-                        <a href="{{ route('user.visits.show', $visit->id) }}" class="btn btn-info">View</a>
+                        <a href="{{ route('patient.visits.show', $visit->id) }}" class="btn btn-info">View</a>
                       </td>
                     </tr>
                   @endforeach
