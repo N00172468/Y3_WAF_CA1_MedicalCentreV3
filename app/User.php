@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:29:43+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T18:40:13+00:00
+# @Last modified time: 2019-11-17T16:51:20+00:00
 
 
 
@@ -44,6 +44,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // One-to-Many User->Doctor:
+    public function doctor() {
+      return $this->hasOne('App\Doctor');
+    }
+
+    // One-to-Many User->Patient:
+    public function patient() {
+      return $this->hasOne('App\Patient');
+    }
 
     // Many-to-Many Relationship between Roles and Users:
     public function roles()
