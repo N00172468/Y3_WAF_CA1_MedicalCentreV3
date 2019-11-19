@@ -18,6 +18,15 @@
                     <hr/>
                     Welcome, Doctor {{ Auth::user()->name }}.
                     <a href="{{ route('doctor.visits.index') }}">View Your Visits</a>
+                    <hr/>
+                    DETAILS:
+                    <br/>
+                    Email: {{ Auth::user()->email }}
+                    <br/>
+                    Date Started in Eastwood Medical Centre: {{ Auth::user()->doctor->date_started }}
+                    <br/>
+                    I.D: {{ Auth::user()->doctor->user_id }}
+                </div>
                 </div>
             </div>
         </div>

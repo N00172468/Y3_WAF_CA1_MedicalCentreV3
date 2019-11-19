@@ -18,6 +18,16 @@
                     <hr/>
                     Welcome, {{ Auth::user()->name }}.
                     <a href="{{ route('patient.visits.index') }}">View Your Visits</a>
+                    <hr/>
+                    DETAILS:
+                    <br/>
+                    Email: {{ Auth::user()->email }}
+                    <br/>
+                    Health Insurance: {{ Auth::user()->patient->health_insurance }}
+                    <br/>
+                    Policy Number: {{ Auth::user()->patient->policy_no }}
+                    <br/>
+                    I.D: {{ Auth::user()->patient->user_id }}
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
 # @Date:   2019-11-03T16:29:43+00:00
 # @Email:  !!!!!---CTRL + ALT + C = Colour Picker---!!!!!
 # @Last modified by:   John Carlo M. Ramos
-# @Last modified time: 2019-11-03T17:07:29+00:00
+# @Last modified time: 2019-11-17T17:15:43+00:00
 
 
 
@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
       // Call Seeders:
       $this->call(RolesTableSeeder::class);
       $this->call(UsersTableSeeder::class);
+      $this->call(DoctorsTableSeeder::class);
+      $this->call(PatientsTableSeeder::class);
     }
 }
