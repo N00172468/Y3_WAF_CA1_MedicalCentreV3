@@ -6,8 +6,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            Visits:
-            <a href="{{ route('admin.visits.create') }}" class="btn btn-primary float-right">Add</a>
+            Doctors:
+            <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary float-right">Add</a>
           </div>
           <div class="card-body">
             @if (count($doctors) === 0)
