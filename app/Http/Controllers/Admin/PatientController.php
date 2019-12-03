@@ -76,9 +76,7 @@ class PatientController extends Controller
         if ($request->input('health_insurance') != null) {
           $patient->health_insurance = true;
         }
-
         $patient->policy_no = $request->input('policy_no');
-        $patient->user_id = $request->input('user_id');
         $patient->user_id = $user->id;
         $patient->save();
 
@@ -108,7 +106,11 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+      $patient = Patient::findOrFail($id);
+
+      return view('admin.patients.edit')->with([
+        'patient' => $patient
+      ]);
     }
 
     /**
@@ -120,7 +122,31 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $patient = Patient::findOrFail($id);
+
+      $request->validate([
+        'name' => 'required|max:191',
+        'address' => 'required|max:191',
+        'phone' => 'required|max:191',
+        'email' => 'required|max:191',
+        // 'health_insurance' => 'required',
+        'policy_no' => 'max:10'
+      ]);
+
+      $user->name = $request->input('name');
+      $user->address = $request->input('address');
+      $user->phone = $request->input('phone');
+      $user->email = $request->input('email');
+      $user->password = bcrypt('secret');
+      $user->save();
+
+      if ($request->input('health_insurance') != null) {
+        $patient->health_insurance = true;
+      }
+      $patient->policy_no = $request->input('policy_no');;
+      $patient->save();
+
+      return redirect()->route('admin.patients.index');
     }
 
     /**
@@ -131,6 +157,13 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $patient = Patient::findOrFail($id);
+      $user = User::findOrFail($patient->user_id);
+
+
+      $patient->delete();
+      $user->delete();
+
+      return redirect()->route('admin.patients.index');
     }
 }

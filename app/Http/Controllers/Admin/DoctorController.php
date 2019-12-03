@@ -151,7 +151,6 @@ class DoctorController extends Controller
     {
 
       $doctor = Doctor::findOrFail($id);
-
       $user = User::findOrFail($doctor->user_id);
 
 
