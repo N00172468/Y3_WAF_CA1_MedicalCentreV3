@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Patient;
+use App\User;
+use App\Role;
 
 class PatientController extends Controller
 {
@@ -29,7 +31,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.patients.create');
     }
 
     /**
@@ -40,7 +42,33 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role_patient = Role::where('name', 'patient')->first();
+
+        $request->validate([
+          'name' => 'required|max:191',
+          'address' => 'required|max:191',
+          'phone' => 'required|max:191',
+          'email' => 'required|max:191',
+          'health_insurance' => 'required',
+          'policy_no' => 'required|max:10'
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->password = bcrypt('secret');
+        $user->save();
+
+        $patient = new Patient();
+        $patient->health_insurance = $request->input('health_insurance');
+        $patient->policy_no = $request->input('policy_no');
+        $patient->user_id = $request->input('user_id');
+        $patient->user_id = $user->id;
+        $patient->save();
+
+        return redirect()->route('admin.patients.index');
     }
 
     /**

@@ -143,8 +143,14 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+      // $user = Doctor::findOrFail($id);
+      $doctor = Doctor::findOrFail($id);
+
+      // $user->delete();
+      $doctor->delete();
+
+      return redirect()->route('admin.doctors.index');
     }
 }
