@@ -13,6 +13,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Visits;
+use App\Doctor;
+use App\Patient;
 
 class VisitController extends Controller
 {
@@ -45,7 +47,13 @@ class VisitController extends Controller
      */
     public function create()
     {
-        return view('admin.visits.create');
+        $doctors = Doctor::all();
+        $patients = Patient::all();
+
+        return view('admin.visits.create')->with([
+          'doctors' => $doctors,
+          'patients' => $patients
+        ]);
     }
 
     /**
@@ -61,7 +69,9 @@ class VisitController extends Controller
         'time_start' => 'required|max:191',
         'time_end' => 'required|max:191',
         'duration_of_visit' => 'required|numeric|min:0',
-        'cost_of_visit' => 'required|numeric|min:0'
+        'cost_of_visit' => 'required|numeric|min:0',
+        'doctor_id' => 'required|integer',
+        'patient_id' => 'required|integer'
       ]);
 
       $visit = new Visits();
@@ -70,6 +80,8 @@ class VisitController extends Controller
       $visit->time_end = $request->input('time_end');
       $visit->duration_of_visit = $request->input('duration_of_visit');
       $visit->cost_of_visit = $request->input('cost_of_visit');
+      $visit->doctor_id = $request->input('doctor_id');
+      $visit->patient_id = $request->input('patient_id');
 
       $visit->save();
 
@@ -100,9 +112,13 @@ class VisitController extends Controller
     public function edit($id)
     {
       $visit = Visits::findOrFail($id);
+      $doctors = Doctor::all();
+      $patients = Patient::all();
 
       return view('admin.visits.edit')->with([
-        'visit' => $visit
+        'visit' => $visit,
+        'doctors' => $doctors,
+        'patients' => $patients
       ]);
     }
 
@@ -122,7 +138,9 @@ class VisitController extends Controller
         'time_start' => 'required|max:191',
         'time_end' => 'required|max:191',
         'duration_of_visit' => 'required|numeric|min:0',
-        'cost_of_visit' => 'required|numeric|min:0'
+        'cost_of_visit' => 'required|numeric|min:0',
+        'doctor_id' => 'required|integer',
+        'patient_id' => 'required|integer'
       ]);
 
       $visit->date = $request->input('date');
@@ -130,6 +148,8 @@ class VisitController extends Controller
       $visit->time_end = $request->input('time_end');
       $visit->duration_of_visit = $request->input('duration_of_visit');
       $visit->cost_of_visit = $request->input('cost_of_visit');
+      $visit->doctor_id = $request->input('doctor_id');
+      $visit->patient_id = $request->input('patient_id');
 
       $visit->save();
 
