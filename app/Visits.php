@@ -14,5 +14,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visits extends Model
 {
-    // protected $dates = ['name_field'];
+    public function doctor() {
+      return $this->belongsTo('App\Doctor');
+    }
+
+    public function patient() {
+      return $this->belongsTo('App\Patient');
+    }
 }
