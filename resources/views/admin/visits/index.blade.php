@@ -16,6 +16,8 @@
               <table id="table-visits" class="table table-hover">
                 <thead>
                   <th>Date</th>
+                  <th>Doctor</th>
+                  <th>Patient</th>
                   <th>Time Start</th>
                   <th>Time End</th>
                   <th>Duration of Visit</th>
@@ -26,6 +28,8 @@
                   @foreach ($visits as $visit)
                     <tr data-id="{{ $visit->id }}">
                       <td>{{ $visit->date }}</td>
+                      <td>{{ $visit->doctor->user->name }}</td>
+                      <td>{{ $visit->patient->user->name }}</td>
                       <td>{{ $visit->time_start }}</td>
                       <td>{{ $visit->time_end }}</td>
                       <td>{{ $visit->duration_of_visit }}</td>
