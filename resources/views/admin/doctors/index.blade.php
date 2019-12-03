@@ -20,7 +20,7 @@
                   <th>Phone</th>
                   <th>Email</th>
                   <th>Date Started</th>
-                  <th>I.D</th>
+                  <th>Dr. I.D</th>
                 </thead>
                 <tbody>
                   @foreach ($doctors as $doctor)

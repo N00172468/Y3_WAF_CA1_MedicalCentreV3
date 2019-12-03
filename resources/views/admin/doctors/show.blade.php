@@ -32,7 +32,7 @@
                     <td>{{ $doctor->date_started }}</td>
                   </tr>
                   <tr>
-                    <td>I.D</td>
+                    <td>Dr. I.D</td>
                     <td>{{ $doctor->id }}</td>
                   </tr>
                 </tbody>

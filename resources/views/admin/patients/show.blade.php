@@ -36,8 +36,8 @@
                     <td>{{ $patient->policy_no }}</td>
                   </tr>
                   <tr>
-                    <td>I.D</td>
-                    <td>{{ $patient->user_id }}</td>
+                    <td>Patient I.D</td>
+                    <td>{{ $patient->id }}</td>
                   </tr>
                 </tbody>
               </table>

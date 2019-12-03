@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Patient;
 use App\User;
 use App\Role;
+use App\Visit;
 
 class PatientController extends Controller
 {
@@ -48,6 +49,8 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
+      // dd($request);
+
         $role_patient = Role::where('name', 'patient')->first();
 
         $request->validate([
@@ -55,7 +58,7 @@ class PatientController extends Controller
           'address' => 'required|max:191',
           'phone' => 'required|max:191',
           'email' => 'required|max:191',
-          'health_insurance' => 'required',
+          // 'health_insurance' => 'required',
           'policy_no' => 'max:10'
         ]);
 
@@ -66,9 +69,14 @@ class PatientController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt('secret');
         $user->save();
+        $user->roles()->attach($role_patient);
 
         $patient = new Patient();
-        $patient->health_insurance = $request->input('health_insurance');
+
+        if ($request->input('health_insurance') != null) {
+          $patient->health_insurance = true;
+        }
+
         $patient->policy_no = $request->input('policy_no');
         $patient->user_id = $request->input('user_id');
         $patient->user_id = $user->id;

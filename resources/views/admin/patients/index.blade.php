@@ -21,7 +21,7 @@
                   <th>Email</th>
                   <th>Health Insurance</th>
                   <th>Policy Number</th>
-                  <th>I.D</th>
+                  <th>Patient I.D</th>
                 </thead>
                 <tbody>
                   @foreach ($patients as $patient)
@@ -32,7 +32,7 @@
                       <td>{{ $patient->user->email }}</td>
                       <td>{{ $patient->health_insurance }}</td>
                       <td>{{ $patient->policy_no }}</td>
-                      <td>{{ $patient->user_id }}</td>
+                      <td>{{ $patient->id }}</td>
                       <td>
                         <a href="{{ route('admin.patients.show', $patient->id) }}" class="btn btn-info">View</a>
                         <a href="{{ route('admin.patients.edit', $patient->id) }}" class="btn btn-warning">Edit</a>

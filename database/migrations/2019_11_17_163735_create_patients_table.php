@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('health_insurance');
+            $table->boolean('health_insurance')->default(false);
             // $table->bigInteger('insurance_comp_id');
             $table->string('policy_no', 10)->unique()->nullable();
             $table->bigInteger('user_id')->unsigned();
