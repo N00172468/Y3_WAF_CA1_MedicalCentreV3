@@ -133,12 +133,12 @@ class PatientController extends Controller
         'policy_no' => 'max:10'
       ]);
 
-      $user->name = $request->input('name');
-      $user->address = $request->input('address');
-      $user->phone = $request->input('phone');
-      $user->email = $request->input('email');
-      $user->password = bcrypt('secret');
-      $user->save();
+      $patient->user->name = $request->input('name');
+      $patient->user->address = $request->input('address');
+      $patient->user->phone = $request->input('phone');
+      $patient->user->email = $request->input('email');
+      $patient->user->password = bcrypt('secret');
+      $patient->user->save();
 
       if ($request->input('health_insurance') != null) {
         $patient->health_insurance = true;
