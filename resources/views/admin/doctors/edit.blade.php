@@ -23,19 +23,19 @@
               <input type="hidden" name="_token" value="{{csrf_token() }}">
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $doctor->name) }}" />
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $doctor->user->name) }}" />
               </div>
               <div class="form-group">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $doctor->address) }}" />
+                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $doctor->user->address) }}" />
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $doctor->phone) }}" />
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $doctor->user->phone) }}" />
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $doctor->email) }}" />
+                <input type="text" class="form-control" id="email" name="email" value="{{ old('email', $doctor->user->email) }}" />
               </div>
               <div class="form-group">
                 <label for="date_started">Date Started</label>

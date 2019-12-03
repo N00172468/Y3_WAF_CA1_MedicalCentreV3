@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 use App\Doctor;
 use App\User;
 use App\Role;
+use App\Visit;
 
 class DoctorController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('auth');
+      $this->middleware('role:admin');
+  }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +56,7 @@ class DoctorController extends Controller
         'address' => 'required|max:191',
         'phone' => 'required|max:191',
         'email' => 'required|max:191',
-        'date_started' => 'required'
+        'date_started' => 'required|date'
       ]);
 
       $user = new User();
@@ -59,10 +66,10 @@ class DoctorController extends Controller
       $user->email = $request->input('email');
       $user->password = bcrypt('secret');
       $user->save();
+      $user->roles()->attach($role_doctor);
 
       $doctor = new Doctor();
       $doctor->date_started = $request->input('date_started');
-      $doctor->user_id = $request->input('user_id');
       $doctor->user_id = $user->id;
       $doctor->save();
 
@@ -108,8 +115,8 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $role_doctor = Role::where('name', 'doctor')->first();
-      $user = User::findOrFail($id);
+      // $role_doctor = Role::where('name', 'doctor')->first();
+      // $user = User::findOrFail($id);
       $doctor = Doctor::findOrFail($id);
 
       $request->validate([
@@ -120,18 +127,15 @@ class DoctorController extends Controller
         'date_started' => 'required'
       ]);
 
-      $user = new User();
-      $user->name = $request->input('name');
-      $user->address = $request->input('address');
-      $user->phone = $request->input('phone');
-      $user->email = $request->input('email');
-      $user->password = bcrypt('secret');
-      $user->save();
+      $doctor->user->name = $request->input('name');
+      $doctor->user->address = $request->input('address');
+      $doctor->user->phone = $request->input('phone');
+      $doctor->user->email = $request->input('email');
+      $doctor->user->password = bcrypt('secret');
+      $doctor->user->save();
 
-      $doctor = new Doctor();
       $doctor->date_started = $request->input('date_started');
-      $doctor->user_id = $request->input('user_id');
-      $doctor->user_id = $user->id;
+      // $doctor->user_id = $user->id;
       $doctor->save();
 
       return redirect()->route('admin.doctors.index');
@@ -145,11 +149,14 @@ class DoctorController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-      // $user = Doctor::findOrFail($id);
+
       $doctor = Doctor::findOrFail($id);
 
-      // $user->delete();
+      $user = User::findOrFail($doctor->user_id);
+
+
       $doctor->delete();
+      $user->delete();
 
       return redirect()->route('admin.doctors.index');
     }

@@ -25,7 +25,7 @@ class CreatePatientsTable extends Migration
             $table->bigIncrements('id');
             $table->boolean('health_insurance');
             // $table->bigInteger('insurance_comp_id');
-            $table->string('policy_no', 10);
+            $table->string('policy_no', 10)->unique()->nullable();
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
 

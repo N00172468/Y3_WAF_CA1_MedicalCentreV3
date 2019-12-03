@@ -38,7 +38,7 @@
               </div>
               <div class="form-check">
                 <label for="health_insurance">Health Insurance</label>
-                <input type="checkbox" value="" class="form-control" id="health_insurance" name="health_insurance" value="{{ old('health_insurance') }}" />
+                <input type="checkbox" class="form-control" id="health_insurance" name="health_insurance" value="{{ old('health_insurance') }}" />
               </div>
               <div class="form-group">
                 <label for="policy_no">Policy Number</label>

@@ -30,7 +30,7 @@
                       <td>{{ $doctor->user->phone }}</td>
                       <td>{{ $doctor->user->email }}</td>
                       <td>{{ $doctor->date_started }}</td>
-                      <td>{{ $doctor->user_id }}</td>
+                      <td>{{ $doctor->id }}</td>
                       <td>
                         <a href="{{ route('admin.doctors.show', $doctor->id) }}" class="btn btn-info">View</a>
                         <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="btn btn-warning">Edit</a>

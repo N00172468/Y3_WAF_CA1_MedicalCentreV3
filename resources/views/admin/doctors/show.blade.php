@@ -33,7 +33,7 @@
                   </tr>
                   <tr>
                     <td>I.D</td>
-                    <td>{{ $doctor->user_id }}</td>
+                    <td>{{ $doctor->id }}</td>
                   </tr>
                 </tbody>
               </table>
