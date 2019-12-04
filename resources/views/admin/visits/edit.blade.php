@@ -12,7 +12,7 @@
             @if ($errors->any())
               <div class="alert alert-danger">
                 <ul>
-                  @foreach ($errors->all() as $$error)
+                  @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                   @endforeach
                 </ul>
@@ -30,7 +30,7 @@
                 <br/>
                 <select name="doctor_id">
                   @foreach ($doctors as $doctor)
-                    <option value=" {{ $doctor->id }}  {{ (old('doctor_id', $visit->doctor_id) == $doctor->id) ? "selected" : "" }}">
+                    <option value={{ $doctor->id }}  {{ (old('doctor_id', $visit->doctor_id) == $doctor->id) ? "selected" : "" }}>
                       {{ $doctor->user->name }}
                     </option>
                   @endforeach
@@ -41,7 +41,7 @@
                 <br/>
                 <select name="patient_id">
                   @foreach ($patients as $patient)
-                    <option value=" {{ $patient->id }}  {{ (old('patient_id', $visit->patient_id) == $patient->id) ? "selected" : "" }}">
+                    <option value={{ $patient->id }}  {{ (old('patient_id', $visit->patient_id) == $patient->id) ? "selected" : "" }}>
                       {{ $patient->user->name }}
                     </option>
                   @endforeach

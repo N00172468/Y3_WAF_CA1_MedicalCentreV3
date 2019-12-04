@@ -134,7 +134,7 @@ class VisitController extends Controller
       $visit = Visits::findOrFail($id);
 
       $request->validate([
-        'date' => 'required',
+        'date' => 'required|date',
         'doctor_id' => 'required|integer',
         'patient_id' => 'required|integer',
         'time_start' => 'required|max:191',

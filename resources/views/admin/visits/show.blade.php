@@ -48,7 +48,7 @@
               </table>
               <a href="{{ route('admin.visits.index') }}" class="btn btn-info">Back</a>
               <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
-              @if (!$visit->cancelled && $visit->date->date('Y-m-d'))
+              @if (!$visit->cancelled && $visit->date > date('Y-m-d'))
                 <a href="{{ route('admin.visits.cancel', $visit->id) }}" class="btn btn-danger float-right" style="margin: 0.5px">
                   Cancel Visit
                 </a>
