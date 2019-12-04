@@ -15,6 +15,8 @@
               <table id="table-visits" class="table table-hover">
                 <thead>
                   <th>Date</th>
+                  <th>Doctor</th>
+                  <th>Patient</th>
                   <th>Time Start</th>
                   <th>Time End</th>
                   <th>Duration of Visit</th>
@@ -24,7 +26,15 @@
                 <tbody>
                   @foreach ($visits as $visit)
                     <tr data-id="{{ $visit->id }}">
-                      <td>{{ $visit->date }}</td>
+                      <td>{{ $visit->date }}
+                        @if ($visit->cancelled)
+                          <span class="badge badge-danger" style="padding: 10px; margin: 0.5px">
+                            Visit has been cancelled.
+                          </span>
+                        @endif
+                      </td>
+                      <td>{{ $visit->doctor->user->name }}</td>
+                      <td>{{ $visit->patient->user->name }}</td>
                       <td>{{ $visit->time_start }}</td>
                       <td>{{ $visit->time_end }}</td>
                       <td>{{ $visit->duration_of_visit }}</td>

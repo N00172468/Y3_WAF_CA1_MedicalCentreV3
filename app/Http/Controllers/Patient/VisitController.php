@@ -13,6 +13,8 @@ namespace App\Http\Controllers\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Visits;
+use App\Doctor;
+use App\Patient;
 
 class VisitController extends Controller
 {
