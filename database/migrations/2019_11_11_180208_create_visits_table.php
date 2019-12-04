@@ -24,11 +24,17 @@ class CreateVisitsTable extends Migration
         Schema::create('visits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
+            // $table->bigInteger('doctor_id')->unsigned();
+            // $table->bigInteger('patient_id')->unsigned();
             $table->string('time_start');
             $table->string('time_end');
             $table->decimal('duration_of_visit', 6, 2);
             $table->decimal('cost_of_visit', 6, 2);
             $table->timestamps();
+
+
+            // $table->foreign('doctor_id')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

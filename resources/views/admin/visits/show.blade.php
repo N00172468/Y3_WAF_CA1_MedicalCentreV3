@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Date: {{ $visit->date }} | Time: {{ $visit->time_start }} - {{ $visit->time_end }}
+            Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->id }} | Patient {{ $visit->patient->user->id }}
           </div>
           <div class="card-body">
               <table class="table table-hover">
@@ -14,6 +14,14 @@
                   <tr>
                     <td>Date</td>
                     <td>{{ $visit->date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Doctor</td>
+                    <td>{{ $visit->doctor->user->name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Patient</td>
+                    <td>{{ $visit->patient->user->name }}</td>
                   </tr>
                   <tr>
                     <td>Time Start</td>

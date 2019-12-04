@@ -66,22 +66,22 @@ class VisitController extends Controller
     {
       $request->validate([
         'date' => 'required',
+        'doctor_id' => 'required|integer',
+        'patient_id' => 'required|integer',
         'time_start' => 'required|max:191',
         'time_end' => 'required|max:191',
         'duration_of_visit' => 'required|numeric|min:0',
-        'cost_of_visit' => 'required|numeric|min:0',
-        'doctor_id' => 'required|integer',
-        'patient_id' => 'required|integer'
+        'cost_of_visit' => 'required|numeric|min:0'
       ]);
 
       $visit = new Visits();
       $visit->date = $request->input('date');
+      $visit->doctor_id = $request->input('doctor_id');
+      $visit->patient_id = $request->input('patient_id');
       $visit->time_start = $request->input('time_start');
       $visit->time_end = $request->input('time_end');
       $visit->duration_of_visit = $request->input('duration_of_visit');
       $visit->cost_of_visit = $request->input('cost_of_visit');
-      $visit->doctor_id = $request->input('doctor_id');
-      $visit->patient_id = $request->input('patient_id');
 
       $visit->save();
 
@@ -135,21 +135,21 @@ class VisitController extends Controller
 
       $request->validate([
         'date' => 'required',
+        'doctor_id' => 'required|integer',
+        'patient_id' => 'required|integer',
         'time_start' => 'required|max:191',
         'time_end' => 'required|max:191',
         'duration_of_visit' => 'required|numeric|min:0',
-        'cost_of_visit' => 'required|numeric|min:0',
-        'doctor_id' => 'required|integer',
-        'patient_id' => 'required|integer'
+        'cost_of_visit' => 'required|numeric|min:0'
       ]);
 
       $visit->date = $request->input('date');
+      $visit->doctor_id = $request->input('doctor_id');
+      $visit->patient_id = $request->input('patient_id');
       $visit->time_start = $request->input('time_start');
       $visit->time_end = $request->input('time_end');
       $visit->duration_of_visit = $request->input('duration_of_visit');
       $visit->cost_of_visit = $request->input('cost_of_visit');
-      $visit->doctor_id = $request->input('doctor_id');
-      $visit->patient_id = $request->input('patient_id');
 
       $visit->save();
 

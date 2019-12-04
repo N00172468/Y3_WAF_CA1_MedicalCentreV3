@@ -36,34 +36,63 @@
 
                 <h1>|</h1>
 
-                {{-- Doctors --}}
-                <a class="navbar-brand" href="{{ route('admin.doctors.index') }}">
-                    Doctors
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                {{-- Patients --}}
-                <a class="navbar-brand" href="{{ route('admin.patients.index') }}">
-                    Patients
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                {{-- Visits --}}
-                <a class="navbar-brand" href="{{ route('admin.visits.index') }}">
-                    Visits
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      {{-- ADMIN ACCOUNT --}}
+                      @if(Auth::user() && Auth::user()->hasRole('admin'))
+                        {{-- Doctors --}}
+                        <a class="navbar-brand" href="{{ route('admin.doctors.index') }}">
+                            Doctors
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
+                        {{-- Patients --}}
+                        <a class="navbar-brand" href="{{ route('admin.patients.index') }}">
+                            Patients
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        {{-- Visits --}}
+                        <a class="navbar-brand" href="{{ route('admin.visits.index') }}">
+                            Visits
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                      {{-- DOCTOR ACCOUNT --}}
+                      @elseif (Auth::user() && Auth::user()->hasRole('doctor'))
+                        {{-- Patients --}}
+                        <a class="navbar-brand" href="{{ route('doctor.patients.index') }}">
+                            Patients
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        {{-- Visits --}}
+                        <a class="navbar-brand" href="{{ route('doctor.visits.index') }}">
+                            Visits
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        {{-- PATIENT ACCOUNT --}}
+                      @elseif (Auth::user() && Auth::user()->hasRole('patient'))
+                          {{-- Visits --}}
+                          <a class="navbar-brand" href="{{ route('patient.visits.index') }}">
+                              Visits
+                          </a>
+                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                              <span class="navbar-toggler-icon"></span>
+                          </button>
+                      @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -91,12 +120,7 @@
                                   <a class="dropdown-item" href="{{ route('home') }}">
                                       {{ __('Dashboard') }}
                                   </a>
-
-                                  {{-- Visits --}}
-                                  {{-- <a class="dropdown-item" href="{{ route('admin.visits.index') }}">
-                                      {{ __('Visits') }}
-                                  </a> --}}
-
+                                  
                                   {{-- Github --}}
                                   <a class="dropdown-item" href="https://github.com/N00172468">
                                       Github
