@@ -30,6 +30,7 @@ class CreateVisitsTable extends Migration
             $table->string('time_end');
             $table->decimal('duration_of_visit', 6, 2);
             $table->decimal('cost_of_visit', 6, 2);
+            $table->boolean('cancelled')->default(false);
             $table->timestamps();
 
 

@@ -13,6 +13,7 @@ namespace App\Http\Controllers\Doctor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Visits;
+use App\Doctor;
 use App\Patient;
 
 class VisitController extends Controller
@@ -58,6 +59,8 @@ class VisitController extends Controller
   {
     $request->validate([
       'date' => 'required',
+      'doctor_id' => 'required|integer',
+      'patient_id' => 'required|integer',
       'time_start' => 'required|max:191',
       'time_end' => 'required|max:191',
       'duration_of_visit' => 'required|numeric|min:0',
@@ -66,6 +69,8 @@ class VisitController extends Controller
 
     $visit = new Visits();
     $visit->date = $request->input('date');
+    $visit->doctor_id = $request->input('doctor_id');
+    $visit->patient_id = $request->input('patient_id');
     $visit->time_start = $request->input('time_start');
     $visit->time_end = $request->input('time_end');
     $visit->duration_of_visit = $request->input('duration_of_visit');
@@ -100,9 +105,13 @@ class VisitController extends Controller
   public function edit($id)
   {
     $visit = Visits::findOrFail($id);
+    $doctors = Doctor::all();
+    $patients = Patient::all();
 
     return view('doctor.visits.edit')->with([
-      'visit' => $visit
+      'visit' => $visit,
+      'doctors' => $doctors,
+      'patients' => $patients
     ]);
   }
 
@@ -119,6 +128,8 @@ class VisitController extends Controller
 
     $request->validate([
       'date' => 'required',
+      'doctor_id' => 'required|integer',
+      'patient_id' => 'required|integer',
       'time_start' => 'required|max:191',
       'time_end' => 'required|max:191',
       'duration_of_visit' => 'required|numeric|min:0',
@@ -126,6 +137,8 @@ class VisitController extends Controller
     ]);
 
     $visit->date = $request->input('date');
+    $visit->doctor_id = $request->input('doctor_id');
+    $visit->patient_id = $request->input('patient_id');
     $visit->time_start = $request->input('time_start');
     $visit->time_end = $request->input('time_end');
     $visit->duration_of_visit = $request->input('duration_of_visit');
@@ -149,5 +162,19 @@ class VisitController extends Controller
     $visit->delete();
 
     return redirect()->route('doctor.visits.index');
+  }
+
+  /**
+   * Cancel the Visit
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function cancel($id) {
+      $visit = Visit::findOrFail($id);
+      $visit->cancelled = true;
+      $visit->save();
+
+      return redirect()->route('doctor.visits.index', $visit->id);
   }
 }

@@ -27,7 +27,13 @@
                 <tbody>
                   @foreach ($visits as $visit)
                     <tr data-id="{{ $visit->id }}">
-                      <td>{{ $visit->date }}</td>
+                      <td>{{ $visit->date }}
+                        @if ($visit->cancelled)
+                          <span class="badge badge-danger" style="padding: 10px; margin: 0.5px">
+                            Visit has been cancelled.
+                          </span>
+                        @endif
+                      </td>
                       <td>{{ $visit->doctor->user->name }}</td>
                       <td>{{ $visit->patient->user->name }}</td>
                       <td>{{ $visit->time_start }}</td>

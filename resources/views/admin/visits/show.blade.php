@@ -7,6 +7,11 @@
         <div class="card">
           <div class="card-header">
             Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->id }} | Patient {{ $visit->patient->user->id }}
+            @if ($visit->cancelled)
+              <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
+                Visit has been cancelled.
+              </span>
+            @endif
           </div>
           <div class="card-body">
               <table class="table table-hover">
@@ -43,6 +48,11 @@
               </table>
               <a href="{{ route('admin.visits.index') }}" class="btn btn-info">Back</a>
               <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
+              @if (!$visit->cancelled && $visit->date->date('Y-m-d'))
+                <a href="{{ route('admin.visits.cancel', $visit->id) }}" class="btn btn-danger float-right" style="margin: 0.5px">
+                  Cancel Visit
+                </a>
+              @endif
               <form style="display:inline-block" method="POST" action="{{ route('admin.visits.destroy', $visit->id) }}">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

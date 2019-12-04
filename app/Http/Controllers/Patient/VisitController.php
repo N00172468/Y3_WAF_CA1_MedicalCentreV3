@@ -37,7 +37,7 @@ class VisitController extends Controller
         'visits' => $visits
       ]);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -51,5 +51,19 @@ class VisitController extends Controller
       return view('patient.visits.show')->with([
         'visit' => $visit
       ]);
+    }
+
+    /**
+     * Cancel the Visit
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($id) {
+        $visit = Visit::findOrFail($id);
+        $visit->cancelled = true;
+        $visit->save();
+
+        return redirect()->route('patient.visits.index', $visit->id);
     }
 }

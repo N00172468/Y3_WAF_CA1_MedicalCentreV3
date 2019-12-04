@@ -170,4 +170,18 @@ class VisitController extends Controller
 
       return redirect()->route('admin.visits.index');
     }
+
+    /**
+     * Cancel the Visit
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel($id) {
+        $visit = Visit::findOrFail($id);
+        $visit->cancelled = true;
+        $visit->save();
+
+        return redirect()->route('admin.visits.index', $visit->id);
+    }
 }
