@@ -27,7 +27,7 @@
               <div class="form-group">
                 <label for="doctor">Doctor</label>
                 <br/>
-                <select name="doctor_id">
+                <select class="form-control" name="doctor_id">
                   @foreach ($doctors as $doctor)
                     <option value=" {{ $doctor->id }}  {{ (old('doctor_id') == $doctor->id) ? "selected" : "" }}">
                       {{ $doctor->user->name }}
@@ -38,7 +38,7 @@
               <div class="form-group">
                 <label for="patient">Patient</label>
                 <br/>
-                <select name="patient_id">
+                <select class="form-control" name="patient_id">
                   @foreach ($patients as $patient)
                     <option value=" {{ $patient->id }}  {{ (old('patient_id') == $patient->id) ? "selected" : "" }}">
                       {{ $patient->user->name }}
