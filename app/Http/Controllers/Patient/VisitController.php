@@ -60,7 +60,7 @@ class VisitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function cancel($id) {
-        $visit = Visit::findOrFail($id);
+        $visit = Visits::findOrFail($id);
         $visit->cancelled = true;
         $visit->save();
 

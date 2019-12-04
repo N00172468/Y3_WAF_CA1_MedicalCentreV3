@@ -34,6 +34,8 @@
                           </span>
                         @endif
                       </td>
+                      <td>{{ $visit->doctor->user->name }}</td>
+                      <td>{{ $visit->patient->user->name }}</td>
                       <td>{{ $visit->time_start }}</td>
                       <td>{{ $visit->time_end }}</td>
                       <td>{{ $visit->duration_of_visit }}</td>

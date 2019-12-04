@@ -25,6 +25,28 @@
                 <input type="date" class="form-control" id="date" name="date" value="{{ old('date') }}" />
               </div>
               <div class="form-group">
+                <label for="doctor">Doctor</label>
+                <br/>
+                <select class="form-control" name="doctor_id">
+                  @foreach ($doctors as $doctor)
+                    <option value=" {{ $doctor->id }}  {{ (old('doctor_id') == $doctor->id) ? "selected" : "" }}">
+                      {{ $doctor->user->name }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="patient">Patient</label>
+                <br/>
+                <select class="form-control" name="patient_id">
+                  @foreach ($patients as $patient)
+                    <option value=" {{ $patient->id }}  {{ (old('patient_id') == $patient->id) ? "selected" : "" }}">
+                      {{ $patient->user->name }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="time_start">Time Start</label>
                 <input type="text" class="form-control" id="time_start" name="time_start" value="{{ old('time_start') }}" />
               </div>

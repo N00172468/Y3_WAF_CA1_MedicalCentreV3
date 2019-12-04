@@ -46,7 +46,13 @@ class VisitController extends Controller
    */
   public function create()
   {
-      return view('doctor.visits.create');
+    $doctors = Doctor::all();
+    $patients = Patient::all();
+
+    return view('doctor.visits.create')->with([
+      'doctors' => $doctors,
+      'patients' => $patients
+    ]);
   }
 
   /**
@@ -171,7 +177,7 @@ class VisitController extends Controller
    * @return \Illuminate\Http\Response
    */
   public function cancel($id) {
-      $visit = Visit::findOrFail($id);
+      $visit = Visits::findOrFail($id);
       $visit->cancelled = true;
       $visit->save();
 

@@ -7,6 +7,11 @@
         <div class="card">
           <div class="card-header">
             Date: {{ $visit->date }} | Time: {{ $visit->time_start }} - {{ $visit->time_end }}
+            @if ($visit->cancelled)
+              <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
+                Visit has been cancelled.
+              </span>
+            @endif
           </div>
           <div class="card-body">
               <table class="table table-hover">
@@ -14,6 +19,14 @@
                   <tr>
                     <td>Date</td>
                     <td>{{ $visit->date }}</td>
+                  </tr>
+                  <tr>
+                    <td>Doctor</td>
+                    <td>{{ $visit->doctor->user->name }}</td>
+                  </tr>
+                  <tr>
+                    <td>Patient</td>
+                    <td>{{ $visit->patient->user->name }}</td>
                   </tr>
                   <tr>
                     <td>Time Start</td>
@@ -35,6 +48,11 @@
               </table>
               <a href="{{ route('doctor.visits.index') }}" class="btn btn-info">Back</a>
               <a href="{{ route('doctor.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
+              @if (!$visit->cancelled && $visit->date > date('Y-m-d'))
+                <a href="{{ route('doctor.visits.cancel', $visit->id) }}" class="btn btn-danger float-right" style="margin: 0.5px">
+                  Cancel Visit
+                </a>
+              @endif
               <form style="display:inline-block" method="POST" action="{{ route('doctor.visits.destroy', $visit->id) }}">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
