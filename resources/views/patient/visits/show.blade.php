@@ -1,47 +1,81 @@
+<style>
+  .container {
+    color: #dddd !important;
+  }
+
+  .divider {
+    height: 2px;
+    background-color: #b8860b;
+    /* background-color: #7851a9; */
+    border: none;
+    margin-top: 1px;
+  }
+
+  .text {
+    color: #dddd !important;
+  }
+
+  .gold {
+    color: #b8860b;
+  }
+
+  .card-header {
+    font-size: 32px;
+  }
+
+  .card-body {
+    font-size: 22px;
+  }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-12">
+        <h1 class="gold">Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->name }} | Patient: {{ $visit->patient->user->name }}</h1>
+
+        <hr class="divider">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-md-offset-2">
         <div class="card">
-          <div class="card-header">
-            Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->name }} | Patient: {{ $visit->patient->user->name }}
-            @if ($visit->cancelled)
-              <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
-                Visit has been cancelled.
-              </span>
-            @endif
-          </div>
           <div class="card-body">
-              <table class="table table-hover">
+              <table class="table table-hover text">
                 <tbody>
                   <tr>
-                    <td>Date</td>
+                    <td class="gold">Date</td>
                     <td>{{ $visit->date }}</td>
+                    @if ($visit->cancelled)
+                      <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
+                        Visit has been cancelled.
+                      </span>
+                    @endif
                   </tr>
                   <tr>
-                    <td>Doctor</td>
+                    <td class="gold">Doctor</td>
                     <td>{{ $visit->doctor->user->name }}</td>
                   </tr>
                   <tr>
-                    <td>Patient</td>
+                    <td class="gold">Patient</td>
                     <td>{{ $visit->patient->user->name }}</td>
                   </tr>
                   <tr>
-                    <td>Time Start</td>
+                    <td class="gold">Time Start</td>
                     <td>{{ $visit->time_start }}</td>
                   </tr>
                   <tr>
-                    <td>Time End</td>
+                    <td class="gold">Time End</td>
                     <td>{{ $visit->time_end }}</td>
                   </tr>
                   <tr>
-                    <td>Duration of Visit</td>
+                    <td class="gold">Duration of Visit</td>
                     <td>{{ $visit->duration_of_visit }}</td>
                   </tr>
                   <tr>
-                    <td>Cost of Visit</td>
+                    <td class="gold">Cost of Visit</td>
                     <td>{{ $visit->cost_of_visit }}</td>
                   </tr>
                 </tbody>

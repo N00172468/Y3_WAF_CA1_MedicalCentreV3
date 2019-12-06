@@ -1,42 +1,72 @@
+<style>
+  .container {
+    color: #dddd !important;
+  }
+
+  .divider {
+    height: 2px;
+    background-color: #b8860b;
+    /* background-color: #7851a9; */
+    border: none;
+    margin-top: 1px;
+  }
+
+  .text {
+    color: #dddd !important;
+  }
+
+  .gold {
+    color: #b8860b;
+  }
+
+  .card-header {
+    font-size: 32px;
+  }
+
+  .card-body {
+    font-size: 22px;
+  }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-12">
+        <h1 class="gold">Patient {{ $patient->user->name }}</h1>
+        <hr class="divider">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-md-offset-2">
         <div class="card">
-          <div class="card-header">
-            Patient: {{ $patient->user->name }}
-          </div>
           <div class="card-body">
-              <table class="table table-hover">
+              <table class="table table-hover text">
                 <tbody>
                   <tr>
-                    <td>Name</td>
-                    <td>{{ $patient->user->name }}</td>
-                  </tr>
-                  <tr>
-                    <td>Address</td>
+                    <td class="gold">Address</td>
                     <td>{{ $patient->user->address }}</td>
                   </tr>
                   <tr>
-                    <td>Phone</td>
+                    <td class="gold">Phone</td>
                     <td>{{ $patient->user->phone }}</td>
                   </tr>
                   <tr>
-                    <td>Email</td>
+                    <td class="gold">Email</td>
                     <td>{{ $patient->user->email }}</td>
                   </tr>
                   <tr>
-                    <td>Date Started</td>
+                    <td class="gold">Health Insurance</td>
                     <td>{{ $patient->health_insurance }}</td>
                   </tr>
                   <tr>
-                    <td>Policy Number</td>
+                    <td class="gold">Policy Number</td>
                     <td>{{ $patient->policy_no }}</td>
                   </tr>
                   <tr>
-                    <td>Patient I.D</td>
+                    <td class="gold">Patient I.D</td>
                     <td>{{ $patient->id }}</td>
                   </tr>
                 </tbody>
