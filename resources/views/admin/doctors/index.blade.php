@@ -1,11 +1,33 @@
+<style>
+  .container {
+    color: #dddd !important;
+  }
+
+  .text {
+    color: #dddd !important;
+  }
+
+  .gold {
+    color: #b8860b;
+  }
+
+  .card-header {
+    font-size: 32px;
+  }
+
+  .card-body {
+    font-size: 22px;
+  }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+  <div class="fluid-container">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header gold">
             Doctors:
             <a href="{{ route('admin.doctors.create') }}" class="btn btn-primary float-right">Add</a>
           </div>
@@ -13,14 +35,15 @@
             @if (count($doctors) === 0)
               <p>There are no Doctors on record!</p>
             @else
-              <table id="table-doctors" class="table table-hover">
-                <thead>
+              <table id="table-doctors" class="table table-hover text">
+                <thead class="gold">
                   <th>Name</th>
                   <th>Address</th>
                   <th>Phone</th>
                   <th>Email</th>
                   <th>Date Started</th>
                   <th>Dr. I.D</th>
+                  <th>Actions</th>
                 </thead>
                 <tbody>
                   @foreach ($doctors as $doctor)

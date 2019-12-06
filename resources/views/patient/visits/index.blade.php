@@ -1,19 +1,41 @@
+<style>
+  .container {
+    color: #dddd !important;
+  }
+
+  .text {
+    color: #dddd !important;
+  }
+
+  .gold {
+    color: #b8860b;
+  }
+
+  .card-header {
+    font-size: 32px;
+  }
+
+  .card-body {
+    font-size: 22px;
+  }
+</style>
+
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
+  <div class="fluid-container">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header gold">
             Visits:
           </div>
           <div class="card-body">
             @if (count($visits) === 0)
               <p>There are no visits on record!</p>
             @else
-              <table id="table-visits" class="table table-hover">
-                <thead>
+              <table id="table-visits" class="table table-hover text">
+                <thead class="gold">
                   <th>Date</th>
                   <th>Doctor</th>
                   <th>Patient</th>
