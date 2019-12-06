@@ -49,6 +49,7 @@
 
             .title {
                 font-size: 84px;
+                text-shadow: 1px 1px 20px #1a1818;
             }
 
             .links > a {
@@ -60,6 +61,7 @@
                 letter-spacing: .2rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                /* text-shadow: 1px 1px 1px black; */
             }
 
             .m-b-md {

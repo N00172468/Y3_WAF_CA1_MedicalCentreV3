@@ -33,19 +33,23 @@
 
   .logo {
     color: #7851a9 !important;
+    text-shadow: 1px 1px 10px black;
   }
 
   .loginReg {
     color: #b8860b !important;
+    text-shadow: 1px 1px 10px black;
   }
 
   .navlink {
     color: #b8860b !important;
+    text-shadow: 1px 1px 3px black;
   }
 
   /* Dropdown */
   .name {
     color: #b8860b !important;
+    text-shadow: 1px 1px 3px black;
   }
 
   .dropdown-toggler {
@@ -160,7 +164,7 @@
 
                                   {{-- Dashboard --}}
                                   <a class="dropdown-item" href="{{ route('home') }}">
-                                      {{ __('Dashboard') }}
+                                      {{ __('Profile') }}
                                   </a>
 
                                   {{-- Github --}}

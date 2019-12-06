@@ -1,6 +1,7 @@
 <style>
   .title {
     color: #b8860b;
+    text-shadow: 1px 1px 3px black;
   }
 
   .row {
