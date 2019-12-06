@@ -12,10 +12,10 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #262626;
                 /* color: #0062ff; */
                 color: #7851a9;
-                font-family: 'Roboto', sans-serif;
+                font-family: 'Raleway', sans-serif;
                 font-weight: 300;
                 height: 100vh;
                 margin: 0;
@@ -42,6 +42,8 @@
             }
 
             .content {
+                letter-spacing: .5rem;
+                text-transform: uppercase;
                 text-align: center;
             }
 
@@ -53,9 +55,9 @@
                 color: #b8860b;
                 padding: 0 25px;
                 font-family: 'Raleway', sans-serif;
-                font-size: 16px;
+                font-size: 20px;
                 font-weight: 500;
-                letter-spacing: .1rem;
+                letter-spacing: .2rem;
                 text-decoration: none;
                 text-transform: uppercase;
             }
@@ -66,8 +68,9 @@
 
             .divider {
               height: 2px;
-              /* background-color: #b8860b; */
-              background-color: #7851a9;
+              background-color: #b8860b;
+              /* background-color: #7851a9; */
+              border: none;
               margin-top: 1px;
             }
         </style>

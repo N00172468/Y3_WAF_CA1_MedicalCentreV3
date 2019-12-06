@@ -1,3 +1,9 @@
+<style>
+  .container {
+    color: #dddd;
+  }
+</style>
+
 @extends('layouts.app')
 
 @section('content')

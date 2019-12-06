@@ -20,13 +20,55 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
+<style>
+  /* Navbar Contents */
+  .navbar {
+    background-color: #262626;
+  }
+
+  .vertDivider {
+    color:  #b8860b !important;
+  }
+
+  .logo {
+    color: #7851a9 !important;
+  }
+
+  .loginReg {
+    color: #b8860b !important;
+  }
+
+  .navlink {
+    color: #b8860b !important;
+  }
+
+  /* Dropdown */
+  .name {
+    color: #b8860b !important;
+  }
+
+  .dropdown-toggler {
+    color: #dddd;
+  }
+
+  .dropdown-menu {
+    background-color: #4e4e4e;
+    color: #dddd;
+  }
+
+  .dropdown-item {
+    color: #dddd;
+  }
+</style>
+
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
 
                 {{-- Logo --}}
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand logo" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
                     Eastwood Medical Centre
                 </a>
@@ -34,7 +76,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <h1>|</h1>
+                <h1 class="vertDivider">|</h1>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -42,7 +84,7 @@
                       {{-- ADMIN ACCOUNT --}}
                       @if(Auth::user() && Auth::user()->hasRole('admin'))
                         {{-- Doctors --}}
-                        <a class="navbar-brand" href="{{ route('admin.doctors.index') }}">
+                        <a class="navbar-brand navlink" href="{{ route('admin.doctors.index') }}">
                             Doctors
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -50,7 +92,7 @@
                         </button>
 
                         {{-- Patients --}}
-                        <a class="navbar-brand" href="{{ route('admin.patients.index') }}">
+                        <a class="navbar-brand navlink" href="{{ route('admin.patients.index') }}">
                             Patients
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -58,7 +100,7 @@
                         </button>
 
                         {{-- Visits --}}
-                        <a class="navbar-brand" href="{{ route('admin.visits.index') }}">
+                        <a class="navbar-brand navlink" href="{{ route('admin.visits.index') }}">
                             Visits
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -68,7 +110,7 @@
                       {{-- DOCTOR ACCOUNT --}}
                       @elseif (Auth::user() && Auth::user()->hasRole('doctor'))
                         {{-- Patients --}}
-                        <a class="navbar-brand" href="{{ route('doctor.patients.index') }}">
+                        <a class="navbar-brand navlink" href="{{ route('doctor.patients.index') }}">
                             Patients
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -76,7 +118,7 @@
                         </button>
 
                         {{-- Visits --}}
-                        <a class="navbar-brand" href="{{ route('doctor.visits.index') }}">
+                        <a class="navbar-brand navlink" href="{{ route('doctor.visits.index') }}">
                             Visits
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -86,7 +128,7 @@
                         {{-- PATIENT ACCOUNT --}}
                       @elseif (Auth::user() && Auth::user()->hasRole('patient'))
                           {{-- Visits --}}
-                          <a class="navbar-brand" href="{{ route('patient.visits.index') }}">
+                          <a class="navbar-brand navlink" href="{{ route('patient.visits.index') }}">
                               Visits
                           </a>
                           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -100,16 +142,16 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link loginReg" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link loginReg" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle name" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -120,7 +162,7 @@
                                   <a class="dropdown-item" href="{{ route('home') }}">
                                       {{ __('Dashboard') }}
                                   </a>
-                                  
+
                                   {{-- Github --}}
                                   <a class="dropdown-item" href="https://github.com/N00172468">
                                       Github

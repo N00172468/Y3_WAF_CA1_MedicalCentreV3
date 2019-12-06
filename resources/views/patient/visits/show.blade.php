@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Date: {{ $visit->date }} | Time: {{ $visit->time_start }} - {{ $visit->time_end }}
+            Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->name }} | Patient: {{ $visit->patient->user->name }}
             @if ($visit->cancelled)
               <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
                 Visit has been cancelled.
@@ -47,7 +47,7 @@
                 </tbody>
               </table>
               <a href="{{ route('patient.visits.index') }}" class="btn btn-info">Back</a>
-              @if (!$visit->cancelled && $visit->date > date('Y-m-d'))
+              @if (!$visit->cancelled && $visit->date >= date('Y-m-d'))
                 <a href="{{ route('patient.visits.cancel', $visit->id) }}" class="btn btn-danger float-right" style="margin: 0.5px">
                   Cancel Visit
                 </a>

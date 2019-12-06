@@ -6,7 +6,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="card">
           <div class="card-header">
-            Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->id }} | Patient {{ $visit->patient->user->id }}
+            Date: {{ $visit->date }} | Doctor: {{ $visit->doctor->user->name }} | Patient: {{ $visit->patient->user->name }}
             @if ($visit->cancelled)
               <span class="badge badge-danger float-right" style="padding: 10px; margin: 0.5px">
                 Visit has been cancelled.
@@ -48,7 +48,7 @@
               </table>
               <a href="{{ route('admin.visits.index') }}" class="btn btn-info">Back</a>
               <a href="{{ route('admin.visits.edit', $visit->id) }}" class="btn btn-warning">Edit</a>
-              @if (!$visit->cancelled && $visit->date > date('Y-m-d'))
+              @if (!$visit->cancelled && $visit->date >= date('Y-m-d'))
                 <a href="{{ route('admin.visits.cancel', $visit->id) }}" class="btn btn-danger float-right" style="margin: 0.5px">
                   Cancel Visit
                 </a>
